@@ -1,7 +1,7 @@
 # Ansible
 Ansible works by configuring client machines from an computer with Ansible components installed and configured. It communicates over normal SSH channels and for this reason Ansible does not require any additional software.
 
-##Installation
+## Installation
 Ansible needs to be installed on the server side.
 
 1. sudo apt -y install ssh
@@ -9,7 +9,7 @@ Ansible needs to be installed on the server side.
 3. sudo apt update
 4. sudo apt -y install ansible
 
-##SSH key setup
+## SSH key setup
 As already mentioned above, Ansible primarily communicates with client computers through SSH. While it certainly has the ability to handle password-based SSH authentication, SSH keys help keep things simple.
 
 We will create SSH key pairs on our client. To create a SSH key pair just type `ssh-keygen` in your terminal.
@@ -20,7 +20,7 @@ To see your public key you can use the following command `cat ~/.ssh/id_rsa.pub`
 
 `ssh-copy-id username@nodeip `
 
-##Confguring Ansible
+## Confguring Ansible
 
 Ansible keeps track of all of the nodes that it knows about through a "hosts" file. We need to set up this file first before we can begin to communicate with our other computers. We need to add the node IP address in the configuration file.
 
@@ -31,13 +31,13 @@ Add the following line in the **hosts** file.
 `host1 ansible_ssh_host=nodeIP`
 
 
-##Check setup
+## Check setup
 
 To check the connection between Ansible node and server.
 
 `ansible -m ping host1`
 
-##Excercises
+## Excercises
 
 - Check all running process on the node through Ansible
 - Check free and used memory in nodes through Ansible
