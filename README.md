@@ -9,6 +9,9 @@ Ansible needs to be installed on the server side.
 3. sudo apt update
 4. sudo apt -y install ansible
 
+On the node install the following (If node already has python installed please skip this step)
+- `apt install python-minimal python-simplejson`
+
 ## SSH key setup
 As already mentioned above, Ansible primarily communicates with client computers through SSH. While it certainly has the ability to handle password-based SSH authentication, SSH keys help keep things simple.
 
@@ -24,18 +27,21 @@ To see your public key you can use the following command `cat ~/.ssh/id_rsa.pub`
 
 Ansible keeps track of all of the nodes that it knows about through a "hosts" file. We need to set up this file first before we can begin to communicate with our other computers. We need to add the node IP address in the configuration file.
 
-Add the following line in the **hosts** file.
+Add the following line in the **hosts** file `/etc/ansible/hosts`.
+
+```
+[test]
+host1 ansible_ssh_host=node_username@nodeIP
+```
 
 
-`[test]`
-`host1 ansible_ssh_host=nodeIP`
-
-
-## Check setup
+## Check setup2
 
 To check the connection between Ansible node and server.
 
 `ansible -m ping host1`
+
+If you are getting permission denied errors to access the host file or ansible files run `sudo chown $USER:$USER /etc/ansible/hosts` or `sudo chown -R $USER:$USER .ansible`
 
 ## Excercises
 
